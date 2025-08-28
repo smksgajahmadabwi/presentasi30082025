@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Rapat Orang Tua - SMK Gajah Mada Banyuwangi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk ikon (digunakan sebagai bullet point) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #004d40; /* Dark Teal */
+            --secondary-color: #00897b; /* Medium Teal */
+            --accent-color: #ffb300; /* Amber */
+            --text-dark: #2c3e50; /* Darker text for better contrast */
+            --text-light: #fefefe;
+            --bg-light: #e0f2f1; /* Light teal background */
+            --bg-card: #ffffff;
+            --border-color: #cfd8dc; /* Lighter border for subtlety */
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #c8e6e4 100%); /* Subtle gradient */
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px; /* Add some padding around the container */
+            box-sizing: border-box;
+        }
+
+        .presentation-container {
+            width: 95%;
+            max-width: 1200px;
+            background-color: var(--bg-card);
+            border-radius: 20px; /* Softer rounded corners */
+            box-shadow: 0 15px 40px var(--shadow-medium); /* Deeper shadow */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 75vh;
+            box-sizing: border-box;
+            position: relative; /* Needed for absolute positioning of top banner */
+        }
+
+        /* Top banner with school name/logo */
+        .top-banner {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Poppins', sans-serif;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .top-banner .school-name {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .top-banner .banner-logo {
+            height: 40px;
+            width: 40px;
+            margin-right: 15px;
+            vertical-align: middle;
+            border-radius: 50%;
+            background-color: white; /* Ensure visibility if logo has transparent background */
+            padding: 3px;
+        }
+        .top-banner .date-info {
+            font-size: 1em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .slide {
+            display: none;
+            padding: 50px; /* Increased padding */
+            text-align: center;
+            flex-grow: 1;
+            overflow-y: auto;
+            animation: fadeInScale 0.8s ease-out forwards; /* Enhanced animation */
+            box-sizing: border-box;
+            background-color: var(--bg-card); /* Ensure slides have white background */
+            position: relative; /* For potential absolute positioned elements within slide */
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Slide Specific Styling */
+        .slide h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em; /* Larger H1 */
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.03em; /* Subtle letter spacing */
+            text-transform: uppercase;
+        }
+
+        .slide h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em; /* Larger H2 */
+            color: var(--secondary-color);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .slide h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6em; /* Larger H3 */
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .slide p {
+            font-size: 1.15em; /* Slightly larger base text */
+            margin-bottom: 15px;
+            max-width: 900px;
+            line-height: 1.7;
+        }
+
+        .slide ul {
+            list-style: none; /* Remove default list style */
+            padding-left: 0;
+        }
+
+        .slide ul li, .slide ol li {
+            font-size: 1.1em;
+            text-align: left;
+            margin: 0 auto 12px auto; /* More margin */
+            max-width: 900px;
+            padding-left: 35px; /* Space for custom bullet/number */
+            position: relative;
+        }
+        
+        /* Custom bullet for unordered lists */
+        .slide ul li::before {
+            content: "\f00c"; /* Font Awesome checkmark */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900; /* Solid icon */
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            top: 4px; /* Adjust as needed */
+            font-size: 0.9em; /* Smaller icon */
+        }
+
+        /* For ordered lists, maintain default numbering but make it bold/colored */
+        .slide ol {
+            list-style-type: decimal; /* Ensure default numbering */
+            padding-left: 30px; /* Adjust padding for numbers */
+        }
+        .slide ol li::marker {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* Cover Slide */
+        .slide.cover-slide {
+            background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(0, 77, 64, 0.95)), url('https://source.unsplash.com/1920x1080/?vocational-school-indonesia,education') no-repeat center center;
+            background-size: cover;
+            color: var(--text-light);
+            border-bottom-left-radius: 20px; /* Match container border */
+            border-bottom-right-radius: 20px;
+        }
+        .cover-slide .logo {
+            width: 180px; /* Larger logo */
+            height: 180px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+            background-color: white;
+            padding: 8px; /* More padding */
+            transition: transform 0.3s ease-in-out;
+        }
+        .cover-slide .logo:hover {
+            transform: scale(1.05);
+        }
+        .cover-slide h1 {
+            color: var(--text-light);
+            font-size: 4em; /* Even larger H1 */
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+            line-height: 1.1;
+        }
+        .cover-slide h2 {
+            color: var(--accent-color);
+            font-size: 2.5em; /* Larger H2 */
+            font-weight: 500; /* Slightly lighter weight */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        .cover-slide p {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .headmaster-photo {
+            width: 200px; /* Larger photo */
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 5px solid var(--accent-color); /* Thicker border */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+            transition: transform 0.3s ease-in-out;
+        }
+        .headmaster-photo:hover {
+            transform: scale(1.03);
+        }
+        .slide#slide2 h2 {
+            margin-bottom: 10px; /* Closer to name */
+            color: var(--primary-color); /* Name in primary color */
+            font-size: 2.2em;
+        }
+        .slide#slide2 p {
+            max-width: 950px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: var(--bg-light);
+            border-left: 8px solid var(--accent-color); /* Thicker accent border */
+            padding: 25px; /* More padding */
+            margin: 30px 0;
+            border-radius: 10px; /* Softer corners */
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Nicer shadow */
+            max-width: 950px;
+            width: 100%;
+            font-size: 1.2em; /* Larger text */
+            line-height: 1.8;
+        }
+        .highlight-box strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger min-width */
+            gap: 25px; /* More spacing */
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .grid-item {
+            background-color: #f8fcfc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px; /* Softer corners */
+            padding: 20px 25px; /* More padding */
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Nicer shadow */
+            font-size: 1.05em; /* Slightly larger text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: flex-start; /* Align text to start */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .grid-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.15em;
+        }
+        .grid-item span {
+            color: var(--text-dark); /* Ensure contact info is visible */
+        }
+        .grid-item.profile-item { /* For management/wali kelas names */
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--primary-color);
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--secondary-color);
+            padding: 18px 22px;
+        }
+        .grid-item.profile-item strong {
+            color: var(--primary-color);
+            font-size: 1.1em;
+            margin-bottom: 3px;
+        }
+        .grid-item.profile-item span {
+            font-weight: 400;
+            color: var(--text-dark);
+            font-size: 1em;
+        }
+
+
+        .table-responsive {
+            width: 100%;
+            max-width: 1000px;
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 12px; /* Consistent rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            font-size: 1em;
+            background-color: var(--bg-card);
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 14px 18px; /* More padding */
+            text-align: left;
+        }
+        th {
+            background-color: var(--secondary-color); /* Teal header */
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        td {
+            background-color: var(--bg-card);
+            color: var(--text-dark);
+        }
+        tr:nth-child(even) td { /* Zebra striping */
+            background-color: #f9f9f9;
+        }
+        table th:first-child { border-top-left-radius: 12px; }
+        table th:last-child { border-top-right-radius: 12px; }
+        .table-responsive table tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+        .table-responsive table tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px; /* More padding */
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+            z-index: 10;
+        }
+
+        .navigation-buttons button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 25px; /* Larger buttons */
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 10px; /* Softer corners */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Space between text and icon */
+        }
+
+        .navigation-buttons button:hover:not(:disabled) {
+            background-color: #ffc107;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .navigation-buttons button:disabled {
+            background-color: #bdbdbd; /* Lighter disabled color */
+            color: #757575; /* Darker text for disabled */
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .slide-counter {
+            font-size: 1.2em; /* Larger counter */
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .presentation-container {
+                width: 98%;
+                min-height: 80vh;
+            }
+            .slide {
+                padding: 40px;
+            }
+            .slide h1 {
+                font-size: 2.5em;
+            }
+            .slide h2 {
+                font-size: 1.8em;
+            }
+            .slide h3 {
+                font-size: 1.4em;
+            }
+            .slide p, .slide ul li, .slide ol li {
+                font-size: 1em;
+                max-width: 700px;
+            }
+            .cover-slide h1 {
+                font-size: 3.5em;
+            }
+            .cover-slide h2 {
+                font-size: 2em;
+            }
+            .cover-slide p {
+                font-size: 1.1em;
+            }
+            .cover-slide .logo {
+                width: 150px;
+                height: 150px;
+            }
+            .headmaster-photo {
+                width: 160px;
+                height: 160px;
+            }
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .navigation-buttons {
+                padding: 15px 30px;
+            }
+            .navigation-buttons button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .slide-counter {
+                font-size: 1em;
+            }
+            .top-banner .school-name {
+                font-size: 1.2em;
+            }
+            .top-banner .banner-logo {
+                height: 35px;
+                width: 35px;
+            }
+            .top-banner .date-info {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .presentation-container {
+                border-radius: 15px;
+            }
+            .top-banner {
+                padding: 10px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+            }
+            .top-banner .school-name {
+                font-size: 1.1em;
+            }
+            .top-banner .banner-logo {
+                display: none; /* Hide logo in small banner for space */
+            }
+            .top-banner .date-info {
+                font-size: 0.8em;
+            }
+
+            .slide {
+                padding: 30px;
+            }
+            .slide h1 {
+                font-size: 2em;
+            }
+            .slide h2 {
+                font-size: 1.5em;
+            }
+            .slide h3 {
+                font-size: 1.3em;
+            }
+            .slide p, .slide ul li, .slide ol li {
+                font-size: 0.95em;
+                padding-left: 25px;
+            }
+            .slide ul li::before {
+                top: 3px;
+                font-size: 0.8em;
+            }
+            .cover-slide h1 {
+                font-size: 2.8em;
+            }
+            .cover-slide h2 {
+                font-size: 1.8em;
+            }
+            .cover-slide p {
+                font-size: 1em;
+            }
+            .cover-slide .logo {
+                width: 120px;
+                height: 120px;
+            }
+            .headmaster-photo {
+                width: 120px;
+                height: 120px;
+                border-width: 3px;
+            }
+            .highlight-box {
+                padding: 20px;
+                font-size: 1em;
+                border-left-width: 6px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .grid-item {
+                padding: 18px 20px;
+                font-size: 0.95em;
+            }
+            .navigation-buttons {
+                padding: 10px 20px;
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+            .navigation-buttons button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+                gap: 5px;
+            }
+            .slide-counter {
+                font-size: 0.9em;
+            }
+            table th, table td {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+            .table-responsive {
+                -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+                border-radius: 10px;
+            }
+            table th:first-child { border-top-left-radius: 10px; }
+            table th:last-child { border-top-right-radius: 10px; }
+            .table-responsive table tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+            .table-responsive table tr:last-child td:last-child { border-bottom-right-radius: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .slide h1 {
+                font-size: 1.8em;
+            }
+            .slide h2 {
+                font-size: 1.3em;
+            }
+            .slide h3 {
+                font-size: 1.1em;
+            }
+            .cover-slide h1 {
+                font-size: 2.2em;
+            }
+            .cover-slide h2 {
+                font-size: 1.5em;
+            }
+            .cover-slide .logo {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 20px;
+            }
+            .cover-slide p {
+                font-size: 0.95em;
+            }
+            .headmaster-photo {
+                width: 100px;
+                height: 100px;
+            }
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .navigation-buttons button {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .slide-counter {
+                order: -1; /* Place counter above buttons on small screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <!-- TOP BANNER - Akan selalu terlihat -->
+        <div class="top-banner">
+            <div style="display: flex; align-items: center;">
+                <img src="LOGO_GM.png" alt="Logo SMK Gajah Mada" class="banner-logo">
+                <span class="school-name">SMK GAJAH MADA BANYUWANGI</span>
+            </div>
+            <span class="date-info">Sabtu, 30 Agustus 2025</span>
+        </div>
+
+        <!-- SLIDE 1: COVER -->
+        <div class="slide cover-slide active" id="slide1">
+            <img src="LOGO_GM.png" alt="Logo SMK Gajah Mada Banyuwangi" class="logo">
+            <h1>RAPAT ORANG TUA / WALI MURID</h1>
+            <h2>Bersama Mewujudkan Generasi Unggul</h2>
+            <p>Sabtu, 30 Agustus 2025 | Aula Serbaguna SMK Gajah Mada Banyuwangi</p>
+        </div>
+
+        <!-- SLIDE 2: SAMBUTAN KEPALA SEKOLAH -->
+        <div class="slide" id="slide2">
+            <h1>Sambutan Kepala Sekolah</h1>
+            <img src="https://via.placeholder.com/200/ffb300/004d40?text=Foto+Kepsek" alt="Foto Kepala Sekolah" class="headmaster-photo">
+            <h2>Drs. H. Witjanarko, M.Pd.</h2>
+            <p>Assalamualaikum Warahmatullahi Wabarakatuh.</p>
+            <p>Selamat datang Bapak/Ibu Orang Tua dan Wali Murid yang kami hormati. Kehadiran Bapak/Ibu adalah wujud dukungan luar biasa bagi kemajuan pendidikan putra-putri kita.</p>
+            <p>Melalui rapat ini, kami ingin berbagi informasi mengenai program-program unggulan sekolah, rencana pengembangan ke depan, serta menjalin kolaborasi erat demi tercapainya Visi dan Misi SMK Gajah Mada Banyuwangi.</p>
+            <p>Mari kita bersama-sama menciptakan lingkungan belajar yang inspiratif, aman, dan kondusif untuk menyiapkan generasi muda yang berkarakter kuat, kompeten, mandiri, dan berdaya saing global.</p>
+            <p>Terima kasih atas kepercayaan dan kerja sama Bapak/Ibu.</p>
+            <p>Wassalamualaikum Warahmatullahi Wabarakatuh.</p>
+        </div>
+
+        <!-- SLIDE 3: VISI SEKOLAH -->
+        <div class="slide" id="slide3">
+            <h1>Visi Sekolah</h1>
+            <h2>SMK Gajah Mada Banyuwangi 2029</h2>
+            <div class="highlight-box">
+                <p><strong>"Mewujudkan lulusan SMK Gajah Mada Banyuwangi yang unggul, berkarakter kuat, kompeten, mandiri dan berdaya saing global, melalui penguasaan kompetensi profesional yang relevan dengan kebutuhan dunia kerja serta keterampilan abad ke-21 yang inovatif."</strong></p>
+            </div>
+            <p><strong>Penjelasan Singkat:</strong></p>
+            <ul>
+                <li><strong>Unggul:</strong> Memiliki prestasi di atas rata-rata, baik akademik maupun non-akademik.</li>
+                <li><strong>Berkarakter Kuat:</strong> Berakhlak mulia, berintegritas, dan bertanggung jawab.</li>
+                <li><strong>Kompeten:</strong> Menguasai keterampilan teknis sesuai standar industri.</li>
+                <li><strong>Mandiri:</strong> Mampu berinisiatif, memecahkan masalah, dan berwirausaha.</li>
+                <li><strong>Berdaya Saing Global:</strong> Siap bersaing di pasar kerja nasional maupun internasional.</li>
+                <li><strong>Keterampilan Abad ke-21:</strong> Menguasai Berpikir Kritis, Kreativitas, Kolaborasi, dan Komunikasi (4C).</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 4: MISI SEKOLAH -->
+        <div class="slide" id="slide4">
+            <h1>Misi Sekolah</h1>
+            <h2>Langkah Kami Menuju Visi</h2>
+            <ul>
+                <li><strong>Menyelenggarakan Pembelajaran Berbasis Kurikulum Industri:</strong> Kurikulum disinkronkan dengan kebutuhan Dunia Usaha dan Dunia Industri (DUDI).</li>
+                <li><strong>Menjalin Kemitraan Strategis dengan Dunia Kerja:</strong> Memperkuat kerjasama 8+i untuk magang, sertifikasi, guru tamu, dan penyerapan lulusan.</li>
+                <li><strong>Mendorong Lingkungan Pembelajaran yang Inklusif dan Inovatif:</strong> Menciptakan suasana belajar yang aman, nyaman, dan mendukung kreativitas siswa.</li>
+                <li><strong>Mengembangkan Potensi dan Keterampilan Abad ke-21:</strong> Mengintegrasikan 4C (Berpikir Kritis, Kreativitas, Kolaborasi, Komunikasi) dalam setiap pembelajaran.</li>
+                <li><strong>Membangun Budaya Sekolah yang Kuat dan Positif:</strong> Membentuk siswa yang berakhlak mulia, beretos kerja tinggi, dan mandiri.</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 5: PROFIL LULUSAN UNGGUL BERKARAKTER PANCASILA -->
+        <div class="slide" id="slide5">
+            <h1>Profil Lulusan Unggul</h1>
+            <h2>Berkarakter Pancasila & Siap Kerja</h2>
+            <p>Lulusan SMK Gajah Mada Banyuwangi adalah individu yang:</p>
+            <div class="grid-container">
+                <div class="grid-item"><i class="fas fa-hand-holding-heart fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Beriman & Bertakwa:</strong> Memiliki integritas moral dan etika kerja.</div>
+                <div class="grid-item"><i class="fas fa-seedling fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Mandiri:</strong> Mampu belajar sepanjang hayat dan berjiwa wirausaha.</div>
+                <div class="grid-item"><i class="fas fa-brain fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Bernalar Kritis:</strong> Mampu memecahkan masalah dan berpikir analitis.</div>
+                <div class="grid-item"><i class="fas fa-lightbulb fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Kreatif:</strong> Inovatif dalam menciptakan solusi dan beradaptasi.</div>
+                <div class="grid-item"><i class="fas fa-people-carry-box fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Bergotong Royong:</strong> Mampu bekerja sama dalam tim dan berempati.</div>
+                <div class="grid-item"><i class="fas fa-globe-americas fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Berkebinekaan Global:</strong> Menghargai keberagaman dan berwawasan luas.</div>
+                <div class="grid-item"><i class="fas fa-wrench fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Kompeten Teknis:</strong> Menguasai keterampilan spesifik bidang keahliannya sesuai standar industri.</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: PROGRAM KEAHLIAN YANG TERSEDIA -->
+        <div class="slide" id="slide6">
+            <h1>Program Keahlian</h1>
+            <h2>Membentuk Profesional Muda</h2>
+            <p>SMK Gajah Mada Banyuwangi menawarkan berbagai konsentrasi keahlian yang relevan dengan kebutuhan industri:</p>
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="grid-item"><i class="fas fa-car fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Teknik Kendaraan Ringan (TKR)</strong></div>
+                <div class="grid-item"><i class="fas fa-tv fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Teknik Audio Video (TAV)</strong></div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Teknik Sepeda Motor (TSM)</strong></div>
+                <div class="grid-item"><i class="fas fa-network-wired fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Teknik Komputer dan Jaringan (TKJ)</strong></div>
+                <div class="grid-item"><i class="fas fa-palette fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Desain Komunikasi Visual (DKV)</strong></div>
+                <div class="grid-item"><i class="fas fa-calculator fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Akuntansi (AK)</strong></div>
+                <div class="grid-item"><i class="fas fa-briefcase fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i><strong>Manajemen Perkantoran (MP)</strong></div>
+            </div>
+            <p style="margin-top: 20px;">Setiap program keahlian didukung oleh kurikulum berbasis industri dan fasilitas praktik yang memadai.</p>
+        </div>
+
+        <!-- SLIDE 7: KURIKULUM MERDEKA & PEMBELAJARAN INOVATIF -->
+        <div class="slide" id="slide7">
+            <h1>Pembelajaran Inovatif</h1>
+            <h2>Kurikulum Nasional & Teaching Factory</h2>
+            <ul>
+                <li>Menggunakan <strong>Kurikulum Nasional</strong> yang sudah disinkronkan dengan <strong>KKNI (Kerangka Kualifikasi Nasional Indonesia)</strong> dan kebutuhan dunia kerja.</li>
+                <li>Fokus pada pengembangan keterampilan praktis melalui:
+                    <ul>
+                        <li><strong>Teaching Factory (TeFa):</strong> Pembelajaran berbasis produksi atau jasa nyata di lingkungan sekolah seperti Produksi Perangkat Lunak dan Perangkat Keras, Produksi perangkat IoT, Produksi Engine Dinamometer, Scantool Sepeda Motor, Alat Remap ECU Sepeda Motor, bengkel servis, studio digital, atau jasa akuntansi.</li>
+                        <li><strong>Project-Based Learning (PjBL):</strong> Siswa belajar melalui proyek-proyek yang relevan dengan industri.</li>
+                    </ul>
+                </li>
+                <li>Mengintegrasikan <strong>Profil Pelajar Pancasila</strong> dalam setiap aspek pembelajaran.</li>
+            </ul>
+            <h3>Contoh Unit Usaha di Sekolah (Teaching Factory):</h3>
+            <ul>
+                <li>PT TEFA SOLUSINDO: Produksi Perangkat Lunak dan Perangkat Keras, Produksi perangkat IoT, Produksi Engine Dinamometer, Produksi Gas Analyzer, Produksi Scantool Sepeda Motor, Produksi Alat Remap ECU Sepeda Motor</li>
+                <li>Bank Mini GM 68: Melayani Tabungan dan Pinjaman Guru</li>
+                <li>Toko GMART: Menjual ATK, Kebutuhan Rumah Tangga, Snack/Minuman</li>
+                <li>Service Sepeda Motor</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 8: JADWAL PEMBELAJARAN -->
+        <div class="slide" id="slide8">
+            <h1>Jadwal Pembelajaran</h1>
+            <h2>Rutin dan Terstruktur</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Senin</td><td>06.30 – 13.25</td></tr>
+                        <tr><td>Selasa</td><td>06.45 – 14.05</td></tr>
+                        <tr><td>Rabu</td><td>06.45 – 14.05</td></tr>
+                        <tr><td>Kamis</td><td>06.45 – 13.00</td></tr>
+                        <tr><td>Jumat</td><td>06.30 – 10.30</td></tr>
+                        <tr><td>Sabtu</td><td>06.45 – 13.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Jadwal ini dirancang untuk memaksimalkan waktu belajar dan praktik siswa.</p>
+        </div>
+
+        <!-- SLIDE 9: KEGIATAN KOKURIKULER & PENGUATAN KARAKTER -->
+        <div class="slide" id="slide9">
+            <h1>Kegiatan Kokurikuler & Karakter</h1>
+            <h2>Mengembangkan Potensi Sepenuhnya</h2>
+            <h3>Dimensi Profil Pelajar Pancasila:</h3>
+            <div class="grid-container">
+                <div class="grid-item"><i class="fas fa-hands-praying fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>1. Keimanan dan Ketakwaan Terhadap Tuhan YME</div>
+                <div class="grid-item"><i class="fas fa-earth-asia fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>2. Kewargaan (Kebinekaan Global)</div>
+                <div class="grid-item"><i class="fas fa-magnifying-glass-chart fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>3. Penalaran Kritis</div>
+                <div class="grid-item"><i class="fas fa-paint-brush fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>4. Kreatifitas</div>
+                <div class="grid-item"><i class="fas fa-people-group fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>5. Kolaborasi</div>
+                <div class="grid-item"><i class="fas fa-user-tie fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>6. Kemandirian</div>
+                <div class="grid-item"><i class="fas fa-heart-pulse fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>7. Kesehatan</div>
+                <div class="grid-item"><i class="fas fa-comments fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>8. Komunikasi</div>
+            </div>
+            <h3>Penerapan "7 Kebiasaan Anak Indonesia Hebat":</h3>
+            <ol style="columns: 2; -webkit-columns: 2; -moz-columns: 2; text-align: left; max-width: 800px;">
+                <li>Bangun Pagi</li>
+                <li>Beribadah</li>
+                <li>Berolahraga</li>
+                <li>Makan Sehat dan Bergizi</li>
+                <li>Gemar Belajar</li>
+                <li>Bermasyarakat</li>
+                <li>Tidur Cepat</li>
+            </ol>
+            <p>Kegiatan Kokurikuler dilaksanakan secara kolaboratif antar mata pelajaran.</p>
+        </div>
+
+        <!-- SLIDE 10: KEGIATAN EKSTRAKURIKULER -->
+        <div class="slide" id="slide10">
+            <h1>Kegiatan Ekstrakurikuler</h1>
+            <h2>Saluran Bakat & Minat Siswa</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Ekstrakurikuler</th>
+                            <th>Pembina</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Pramuka</td><td>Dewi Ihdatul R U, S.Pd, Abdus Salam</td></tr>
+                        <tr><td>2</td><td>Keputrian</td><td>Siti Masitah, S.Pd.I</td></tr>
+                        <tr><td>3</td><td>Tuntas Baca Al Qur'an (TBQ)</td><td>Ahmad Basuki, S.Ag</td></tr>
+                        <tr><td>4</td><td>Seni Tari</td><td>Rima Ayunda, S.Pd</td></tr>
+                        <tr><td>5</td><td>Seni Musik dan Vokal</td><td>Riski Ade Pradana</td></tr>
+                        <tr><td>6</td><td>Robotika</td><td>H. Andy Prasetya, S.T</td></tr>
+                        <tr><td>7</td><td>Konten Kreatif</td><td>Holis Setiowandono, S.Kom</td></tr>
+                        <tr><td>8</td><td>Volly</td><td>Sena Adji Romanda, S.Pd</td></tr>
+                        <tr><td>9</td><td>Futsal</td><td>Sena Adji Romanda, S.Pd</td></tr>
+                        <tr><td>10</td><td>Badminton</td><td>Sri Bintang ARDS, S.Kom</td></tr>
+                        <tr><td>11</td><td>Cakrawala (Teater, Jurnalistik, Pidato)</td><td>Dewi Ihdatul R U, S.Pd, Ummita Madyarani, S.Pd</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Ekstrakurikuler ini bertujuan mengembangkan minat, bakat, dan soft skills siswa.</p>
+        </div>
+
+        <!-- SLIDE 11: ASESMEN & EVALUASI BELAJAR -->
+        <div class="slide" id="slide11">
+            <h1>Asesmen & Evaluasi Belajar</h1>
+            <h2>Mengukur Capaian & Perkembangan</h2>
+            <h3>Formatif:</h3>
+            <ul>
+                <li>Penilaian oleh Guru pada saat proses pembelajaran berlangsung.</li>
+                <li>Tujuannya untuk memantau perkembangan belajar siswa dan memberikan umpan balik.</li>
+            </ul>
+            <h3>Sumatif:</h3>
+            <p>Digunakan untuk mengukur pencapaian pembelajaran siswa di akhir periode.</p>
+            <ul>
+                <li>Ulangan Harian</li>
+                <li>Asesmen Tengah Semester Ganjil: Bulan Oktober 2025</li>
+                <li>Asesmen Semester Ganjil: Bulan Desember 2025</li>
+                <li>Asesmen Tengah Semester Genap: Bulan Maret 2026</li>
+                <li>Asesmen Semester Genap: Bulan Juni 2026</li>
+            </ul>
+            <p>Kami memastikan proses penilaian bersifat objektif dan komprehensif.</p>
+        </div>
+
+        <!-- SLIDE 12: PERATURAN & PERSYARATAN KENAIKAN KELAS -->
+        <div class="slide" id="slide12">
+            <h1>Peraturan & Kenaikan Kelas</h1>
+            <h2>Membangun Disiplin & Tanggung Jawab</h2>
+            <h3>Peraturan Sekolah Umum:</h3>
+            <ol>
+                <li>Hadir Tepat Waktu</li>
+                <li>Menggunakan Seragam sesuai ketentuan</li>
+                <li>Disiplin dan taat tata tertib</li>
+                <li>Saling menghormati dan menjaga etika</li>
+            </ol>
+            <h3>Persyaratan Kenaikan Kelas:</h3>
+            <ol>
+                <li>Mengikuti semua kegiatan pembelajaran (intrakurikuler, kokurikuler, ekstrakurikuler) wajib.</li>
+                <li>Semua mata pelajaran mempunyai nilai minimal sama dengan KKTP (Kriteria Ketuntasan Tujuan Pembelajaran) yakni 75.</li>
+                <li>Kehadiran siswa tidak kurang dari 90%.</li>
+                <li>Siswa mempunyai nilai sikap minimal B.</li>
+                <li>Tidak melakukan tindakan melanggar hukum, asusila, maupun aturan sekolah dan tidak melawan guru.</li>
+            </ol>
+        </div>
+
+        <!-- SLIDE 13: KEMITRAAN DUDI (DUNIA USAHA & DUNIA INDUSTRI) -->
+        <div class="slide" id="slide13">
+            <h1>Kemitraan Strategis DUDI</h1>
+            <h2>Menyiapkan Lulusan Siap Kerja</h2>
+            <p>Kami menjalin kerjasama erat dengan Dunia Usaha dan Dunia Industri (DUDI) untuk:</p>
+            <ul>
+                <li><strong>Penyelarasan Kurikulum:</strong> Memastikan materi pembelajaran relevan dengan kebutuhan industri.</li>
+                <li><strong>Magang Guru:</strong> Meningkatkan kompetensi guru sesuai perkembangan industri.</li>
+                <li><strong>Praktik Kerja Lapangan (PKL) Siswa:</strong> Memberikan pengalaman kerja nyata bagi siswa.</li>
+                <li><strong>Kunjungan Industri:</strong> Memperluas wawasan siswa tentang dunia kerja.</li>
+                <li><strong>Instruktur Mengajar / Guru Tamu:</strong> Industri berbagi ilmu langsung di sekolah.</li>
+                <li><strong>Penyerapan Lulusan:</strong> Memfasilitasi siswa untuk bekerja setelah lulus.</li>
+                <li><strong>CSR (Corporate Social Responsibility):</strong> Dukungan dari industri untuk pengembangan sekolah.</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 14: MITRA DUNIA KERJA -->
+        <div class="slide" id="slide14">
+            <h1>Beberapa Mitra Dunia Kerja Kami</h1>
+            <h2>Peluang Karir untuk Lulusan</h2>
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="grid-item"><i class="fas fa-building fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>1. PT INDO SURYA PERKASA GEMILANG (PT.ISPG)</div>
+                <div class="grid-item"><i class="fas fa-car-side fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>2. PT MAYANGSARI BERLIAN MOTOR</div>
+                <div class="grid-item"><i class="fas fa-industry fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>3. PT Ujang Jaya</div>
+                <div class="grid-item"><i class="fas fa-tools fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>4. Bengkel Perkasa Auto Care Banyuwangi</div>
+                <div class="grid-item"><i class="fas fa-car-alt fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>5. ASCO Daihatsu Banyuwangi</div>
+                <div class="grid-item"><i class="fas fa-car fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>6. CV. BANYUWANGI MOTOR</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>7. AHASS CHANDRA MOTOR</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>8. CV. GARUDA JAYA MOTOR</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>9. AHASS MPM MOTOR BANYUWANGI</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>10. AHASS HASANDA MOTOR</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>11. AHASS SEVRIO MOTOR</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>12. AHASS Wahyu Abadi Motor</div>
+                <div class="grid-item"><i class="fas fa-motorcycle fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>13. RESTU AGUNG MOTOR</div>
+                <div class="grid-item"><i class="fas fa-couch fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>14. Bali Interio Factory</div>
+                <div class="grid-item"><i class="fas fa-tools fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>15. BENGKEL DUTA JAYA SERVICE</div>
+                <div class="grid-item"><i class="fas fa-laptop-code fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>16. CV FARIS JAYA TEKNIK</div>
+                <div class="grid-item"><i class="fas fa-wifi fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>17. Rino Network</div>
+                <div class="grid-item"><i class="fas fa-server fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>18. PT. WAHYU ADIDAYA NETWORK</div>
+                <div class="grid-item"><i class="fas fa-satellite-dish fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>19. CV. Zie. Net</div>
+                <div class="grid-item"><i class="fas fa-print fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>20. Gaya Warna Printing</div>
+                <div class="grid-item"><i class="fas fa-ad fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>21. Raja Advertising</div>
+                <div class="grid-item"><i class="fas fa-graduation-cap fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>22. Stikom Banyuwangi</div>
+                <div class="grid-item"><i class="fas fa-building-columns fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>23. Dinas Pendapatan Daerah Banyuwangi</div>
+                <div class="grid-item"><i class="fas fa-boxes-packing fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>24. PT. POS INDONESIA</div>
+                <div class="grid-item"><i class="fas fa-house-chimney-crack fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>25. Badan Pertanahan Nasional Banyuwangi</div>
+                <div class="grid-item"><i class="fas fa-book-open fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>26. Dinas Perpustakaan dan Kearsipan Banyuwangi</div>
+                <div class="grid-item"><i class="fas fa-people-group fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>27. Badan Kepegawaian Pendidikan dan Pelatihan</div>
+                <div class="grid-item"><i class="fas fa-hand-holding-dollar fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>28. KKS BMT ARTHA INSANI</div>
+                <div class="grid-item"><i class="fas fa-balance-scale-left fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>29. KAP TRI KURNIAWAN</div>
+                <div class="grid-item"><i class="fas fa-desktop fa-lg" style="color: var(--secondary-color); margin-right: 10px;"></i>30. PT BISMAR KOMPUTER</div>
+            </div>
+            <p><em>*Daftar ini adalah sebagian kecil dari total mitra kami.</em></p>
+        </div>
+
+        <!-- SLIDE 15: SUSUNAN MANAJEMEN SEKOLAH -->
+        <div class="slide" id="slide15">
+            <h1>Susunan Manajemen Sekolah</h1>
+            <h2>Tim di Balik Kemajuan Sekolah</h2>
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <div class="grid-item profile-item"><strong>Kepala Sekolah:</strong> <span>Drs H Witjanarko MPd</span></div>
+                <div class="grid-item profile-item"><strong>Wakil Kepala Sekolah Bidang Kurikulum:</strong> <span>Siti Zubaidah, SPd SE</span></div>
+                <div class="grid-item profile-item"><strong>Wakil Kepala Sekolah Bidang Kesiswaaan:</strong> <span>Sri Bintang ARDS, S Pd</span></div>
+                <div class="grid-item profile-item"><strong>Wakil Kepala Sekolah Bidang Humas:</strong> <span>Ilmiyah, S Pd</span></div>
+                <div class="grid-item profile-item"><strong>Wakil Kepala Sekolah Bidang Sarana Prasarana:</strong> <span>Muhammad Bhasry, S E</span></div>
+                <div class="grid-item profile-item"><strong>Kepala Teaching Factory:</strong> <span>Abdul Shobir, S T</span></div>
+                <div class="grid-item profile-item"><strong>Bendahara:</strong> <span>Rima Iswahyuni, S Pd</span></div>
+                <div class="grid-item profile-item"><strong>Kepala Tata Usaha:</strong> <span>Zuhri, A Md</span></div>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: KEPALA PROGRAM KEAHLIAN -->
+        <div class="slide" id="slide16">
+            <h1>Kepala Program Keahlian</h1>
+            <h2>Penanggung Jawab Kompetensi Bidang</h2>
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <div class="grid-item profile-item"><strong>TKR:</strong> <span>Muhammad Effendi, S T</span></div>
+                <div class="grid-item profile-item"><strong>TSM:</strong> <span>Teguh Prasetya, S T</span></div>
+                <div class="grid-item profile-item"><strong>TAV:</strong> <span>Andy Prasetyo Subagio, ST</span></div>
+                <div class="grid-item profile-item"><strong>TKJ:</strong> <span>Holis Setiowandono, S T</span></div>
+                <div class="grid-item profile-item"><strong>MP:</strong> <span>Nana Yuliyanti, S.A.P</span></div>
+                <div class="grid-item profile-item"><strong>AK:</strong> <span>Siti Mutamimah, S Ak</span></div>
+                <div class="grid-item profile-item"><strong>DKV:</strong> <span>Riski Dwi Wahyuni, S Pd</span></div>
+            </div>
+        </div>
+
+        <!-- SLIDE 17: WALI KELAS X -->
+        <div class="slide" id="slide17">
+            <h1>Wali Kelas X</h1>
+            <h2>Pendamping Siswa di Jenjang Awal</h2>
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="grid-item profile-item"><strong>TKR:</strong> <span>Dewi Ihdatul R U, S Pd (0812-5963-8076)</span></div>
+                <div class="grid-item profile-item"><strong>TSM 1:</strong> <span>Ria Puspitasari, S Pd (0896-8207-9912)</span></div>
+                <div class="grid-item profile-item"><strong>TSM 2:</strong> <span>Muhammad Sholeh, ST (0853-3476-3249)</span></div>
+                <div class="grid-item profile-item"><strong>TAV/DKV:</strong> <span>Sena Adji Romanda, S Pd (0857 – 0411-6077)</span></div>
+                <div class="grid-item profile-item"><strong>TKJ:</strong> <span>Army Kurnia Cahyani, S Pd (0823-3141-8337)</span></div>
+                <div class="grid-item profile-item"><strong>AK / MP:</strong> <span>Itta Kristiana, S Pd (0813-3171-1733)</span></div>
+            </div>
+            <p style="margin-top: 25px;"><em>*Kontak wali kelas tersedia untuk komunikasi terkait perkembangan belajar siswa.</em></p>
+        </div>
+
+        <!-- SLIDE 18: WALI KELAS XI -->
+        <div class="slide" id="slide18">
+            <h1>Wali Kelas XI</h1>
+            <h2>Membimbing Menuju Kematangan</h2>
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="grid-item profile-item"><strong>TKR:</strong> <span>Tri Wahyuningsih, S Pd</span></div>
+                <div class="grid-item profile-item"><strong>TSM:</strong> <span>Rima Ayunda, S Pd</span></div>
+                <div class="grid-item profile-item"><strong>TAV/DKV:</strong> <span>Siti Masitah, S Pd I</span></div>
+                <div class="grid-item profile-item"><strong>TKJ:</strong> <span>Ummita Madyarani, S Pd</span></div>
+                <div class="grid-item profile-item"><strong>AK/MP:</strong> <span>Nana Yuliyanti, S Pd</span></div>
+            </div>
+            <p style="margin-top: 25px;"><em>*Kontak wali kelas tersedia untuk komunikasi terkait perkembangan belajar siswa.</em></p>
+        </div>
+
+        <!-- SLIDE 19: PENUTUP -->
+        <div class="slide" id="slide19">
+            <h1>Terima Kasih</h1>
+            <h2>Mari Bersama Wujudkan Masa Depan Cerah!</h2>
+            <p>Kami sangat mengapresiasi dukungan dan kerja sama Bapak/Ibu sekalian.</p>
+            <p>Dengan sinergi antara sekolah, orang tua, dan dunia kerja, kami optimis dapat mencetak lulusan yang tidak hanya siap menghadapi tantangan masa depan, tetapi juga menjadi agen perubahan positif bagi masyarakat dan bangsa.</p>
+            <p>Apabila ada pertanyaan lebih lanjut, jangan ragu untuk menghubungi kami.</p>
+            <img src="LOGO_GM.png" alt="Logo SMK Gajah Mada Banyuwangi" class="logo" style="width: 120px; height: 120px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: none;">
+            <p style="font-size: 0.9em; margin-top: 15px; color: var(--text-dark); opacity: 0.8;">SMK Gajah Mada Banyuwangi &copy; 2025</p>
+        </div>
+
+        <!-- NAVIGATION BUTTONS -->
+        <div class="navigation-buttons">
+            <button id="prevBtn" disabled><i class="fas fa-chevron-left"></i> Sebelumnya</button>
+            <span id="slideCounter">1 / 19</span>
+            <button id="nextBtn">Selanjutnya <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slideCounter');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === totalSlides - 1;
+            slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+
+            // Scroll to top of the slide content if it overflows
+            const activeSlide = document.querySelector('.slide.active');
+            if (activeSlide) {
+                activeSlide.scrollTop = 0;
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize presentation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update headmaster photo placeholder.
+            // You should replace 'headmaster_photo.jpg' with a real image path.
+            // For now, I'll use a placeholder from unsplash if you don't have it.
+            const headmasterPhoto = document.querySelector('.headmaster-photo');
+            if (headmasterPhoto && headmasterPhoto.src.includes('headmaster_photo.jpg')) {
+                // If 'headmaster_photo.jpg' doesn't exist, this will show a placeholder.
+                // Replace with your actual image path when available.
+                headmasterPhoto.src = "https://source.unsplash.com/200x200/?male-teacher-portrait,indonesian-man";
+                // Or you can keep the original placeholder:
+                // headmasterPhoto.src = "https://via.placeholder.com/200/ffb300/004d40?text=Foto+Kepsek";
+            }
+
+            showSlide(currentSlideIndex);
+        });
+    </script>
+</body>
+</html>
